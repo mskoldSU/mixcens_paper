@@ -5,7 +5,8 @@ Martin Sköld
 
 This repository contains code and data used for figures and tables in
 **Trend detection with non-detects in long-term monitoring, a mixed
-model approach**.
+model approach**. It uses the `mixcens` package available at
+<https://github.com/mskoldSU/mixcens>.
 
 ## Data and Figure 1
 
@@ -16,7 +17,7 @@ year (`year`), stations (`location`) and matrices (`species`).
 
 ``` r
 library(tidyverse)
-full_data <- read_csv("data/full_data.csv")
+full_data <- read_csv("https://owncloud.nrm.se/index.php/s/FRAEvbSPRUWIGJi/download")
 full_data |> group_by(year) |> 
   summarise(frac_censored = mean(cens)) |> 
   ggplot(aes(x = year, y = frac_censored)) + geom_col() + labs(title = "Yearly proportion of censored values")
